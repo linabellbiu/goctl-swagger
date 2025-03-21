@@ -10,6 +10,7 @@ import (
 )
 
 func Do(filename string, host string, basePath string, schemes string, in *plugin.Plugin) error {
+	fmt.Println("asdsad")
 	swagger, err := applyGenerate(in, host, basePath, schemes)
 	if err != nil {
 		fmt.Println(err)
