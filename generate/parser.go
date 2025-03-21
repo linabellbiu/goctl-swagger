@@ -56,7 +56,6 @@ func parseRangeOption(option string) (float64, float64, bool) {
 }
 
 func applyGenerate(p *plugin.Plugin, host string, basePath string, schemes string) (*swaggerObject, error) {
-	fmt.Println("asdsad")
 	title, _ := strconv.Unquote(p.Api.Info.Properties["title"])
 	version, _ := strconv.Unquote(p.Api.Info.Properties["version"])
 	desc, _ := strconv.Unquote(p.Api.Info.Properties["desc"])
@@ -108,7 +107,6 @@ func applyGenerate(p *plugin.Plugin, host string, basePath string, schemes strin
 	requestResponseRefs := refMap{}
 	renderServiceRoutes(p.Api.Service, p.Api.Service.Groups, s.Paths, requestResponseRefs)
 	m := messageMap{}
-	fmt.Println("asdsad")
 	renderReplyAsDefinition(s.Definitions, m, p.Api.Types, requestResponseRefs)
 
 	return &s, nil
@@ -413,7 +411,6 @@ func renderStruct(member spec.Member) swaggerParameterObject {
 }
 
 func renderReplyAsDefinition(d swaggerDefinitionsObject, m messageMap, p []spec.Type, refs refMap) {
-	fmt.Println("sadasd")
 	var members = make(map[string]string)
 	for _, i2 := range p {
 		schema := swaggerSchemaObject{
@@ -493,7 +490,6 @@ func renderReplyAsDefinition(d swaggerDefinitionsObject, m messageMap, p []spec.
 		d[i2.Name()] = schema
 	}
 
-	fmt.Println(members)
 	for name, schema := range d {
 		if des, ok := members[name]; ok {
 			schema.Description = des
